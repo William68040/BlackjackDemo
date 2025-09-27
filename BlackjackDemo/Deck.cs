@@ -25,6 +25,32 @@ namespace BlackjackDemo
             }
         }
 
+        public void Shuffle()
+        {
+            //Fisher-yates shuffle algorithm, which is an efficient and unbiased way to shuffle a list
+            int n = cards.Count;
+            for (int i = n - 1; i > 0; i--) // Start from the last element and go backwards
+            {
+                int j = Random.Next(0, i + 1); // Random index from 0 to i
+                // Swap cards[i] with the element at random index
+                Card temp = cards[i];
+                cards[i] = cards[j];
+                cards[j] = temp;
+            }
+        }
+
+        public Card Draw()
+        {
+            if (cards.Count == 0)
+            {
+                throw new InvalidOperationException("The deck is empty."); // Handle the case when there are no cards left in the deck
+            }
+            Card drawnCard = cards[0]; // Get the top card
+            cards.RemoveAt(0); // Remove the top card from the deck
+            return drawnCard; // Return the drawn card
+        }
+
+
 
     }
 }
