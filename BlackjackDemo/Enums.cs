@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlackjackDemo
 {
-    internal class Enums
+    public class Enums
     {
         // Enumeration for Card Suits and Ranks in a standard deck of cards of 52 cards
 
