@@ -50,6 +50,11 @@ namespace BlackjackDemo
             return drawnCard; // Return the drawn card
         }
 
+        public int CardsRemaining
+        {
+            get { return cards.Count; } // Property returns the number of cards left in the deck
+        }
+
 
 
     }
