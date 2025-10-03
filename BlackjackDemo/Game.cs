@@ -55,6 +55,30 @@ namespace BlackjackDemo
         }
 
         //CheckInitialBlackjack
+        public bool CheckInitialBlackjack()
+        {
+            bool playerBlackjack = playerHand.IsBlackjack();
+            bool dealerBlackjack = dealerHand.IsBlackjack();
+            if (playerBlackjack || dealerBlackjack)
+            {
+                if (playerBlackjack && dealerBlackjack)
+                {
+                    Console.WriteLine("Both player and dealer have Blackjack! It's a push.");
+                }
+                else if (playerBlackjack)
+                {
+                    Console.WriteLine("Player has Blackjack! Player wins!");
+                }
+                else
+                {
+                    Console.WriteLine("Dealer has Blackjack! Dealer wins!");
+                }
+                return true; // Indicate that the round is over due to initial blackjack
+            }
+            return false; // No initial blackjack, continue the round
+        }
+
+
 
         //PlayerTurn
 
