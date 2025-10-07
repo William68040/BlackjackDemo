@@ -13,9 +13,14 @@ namespace BlackjackDemo
         private Hand playerHand;
         private Hand dealerHand;
 
+        public Game()
+        {
+            deck = new Deck();
+            deck.Shuffle();
+            playerHand = new Hand();
+            dealerHand = new Hand();
+        }
 
-        //game 
-     
         public void PlayRound()
         {
             ResetHands(); // Reset hands for a new round
