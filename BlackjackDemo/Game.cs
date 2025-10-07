@@ -12,20 +12,31 @@ namespace BlackjackDemo
         private Deck deck;
         private Hand playerHand;
         private Hand dealerHand;
-        public void Play()
+
+
+        //game 
+     
+        public void PlayRound()
         {
-            Console.WriteLine("The game is starting...");
-
-            bool continuePlaying = true;
-
-            while (continuePlaying)
+            ResetHands(); // Reset hands for a new round
+            EnsureDeckReady(); // Ensure the deck is ready for dealing
+            DealInitial(); // Deal initial two cards to player and dealer
+            if (CheckInitialBlackjack()) // Check for initial blackjack
             {
-                PlayRound();
+                return; // End the round if there's an initial blackjack
             }
-
-        private void PlayRound()
-        {
-            ResetHands();
+            PlayerTurn(); // Handle player's turn
+            if (playerHand.IsBusted())
+            {
+                return; // End the round if the player busts
+            }
+            DealerTurn(); // Handle dealer's turn
+            if (dealerHand.IsBusted())
+            {
+                return; // End the round if the dealer busts
+            }
+            string result = CompareHands(); // Compare hands to determine the winner
+            AnnounceResult(result); // Announce the result of the round
         }
 
         public void ResetHands()
