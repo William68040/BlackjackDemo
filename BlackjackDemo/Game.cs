@@ -115,7 +115,23 @@ namespace BlackjackDemo
             Console.WriteLine("Dealer stands.");
         }
 
-        //CompareHands
+        public string CompareHands()
+        {
+            int playerValue = playerHand.GetValue();
+            int dealerValue = dealerHand.GetValue();
+            if (playerValue > dealerValue)
+            {
+                return "Player wins!";
+            }
+            else if (playerValue < dealerValue)
+            {
+                return "Dealer wins!";
+            }
+            else
+            {
+                return "It's a push!";
+            }
+        }
 
         public void ShowHands()
         {
@@ -141,7 +157,17 @@ namespace BlackjackDemo
         }
 
 
-        //AskPlayAgain
+        public bool AskPlayAgain()
+        {
+            Console.WriteLine("Would you like to play another round? (yes/no)");
+            string response = Console.ReadLine().ToLower();
+            while (response != "yes" && response != "no") // Validate input
+            {
+                Console.WriteLine("Invalid input. Please enter 'yes' or 'no'.");
+                response = Console.ReadLine().ToLower();
+            }
+            return response == "yes"; // Return true if the player wants to play again
+        }
 
         public void AnnounceResult(string result)
         {
