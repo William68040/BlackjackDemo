@@ -86,25 +86,36 @@ namespace BlackjackDemo
 
         //CompareHands
 
-        //ShowHands
         public void ShowHands()
         {
             Console.WriteLine($"Player's hand: {playerHand.ToString()} (Value: {playerHand.GetValue()})");
             Console.WriteLine($"Dealer's visible card: {dealerHand.ToString()} (Value: {dealerHand.GetValue()})");
         }
 
-        //RevealDealerHole
         public void RevealDealerHole()
         {
             Console.WriteLine($"Dealer's hole card is: {dealerHand.ToString()}"); // Reveal the dealer's hole card
         }
 
-        //AskAction
+        public string AskAction() 
+        {
+            Console.WriteLine("Would you like to 'hit' or 'stand'?");
+            string action = Console.ReadLine().ToLower();
+            while (action != "hit" && action != "stand") // Validate input
+            {
+                Console.WriteLine("Invalid input. Please enter 'hit' or 'stand'.");
+                action = Console.ReadLine().ToLower();
+            }
+            return action;
+        }
 
 
         //AskPlayAgain
 
-        //AnnounceResult(resultat)
+        public void AnnounceResult(string result)
+        {
+            Console.WriteLine(result); // Announce the result of the round
+        }
 
 
 
