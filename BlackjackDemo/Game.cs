@@ -34,7 +34,6 @@ namespace BlackjackDemo
             dealerHand = new Hand();  // Reset dealer hand for a new round
         }
 
-        // EnsureDeckReady
         public void EnsureDeckReady()
         {
             if (deck == null || deck.CardsRemaining < 15) // If the deck is null or has less than 15 cards, create and shuffle a new deck
@@ -44,7 +43,6 @@ namespace BlackjackDemo
             }
         }
 
-        //DealInitial
         public void DealInitial()
         {
             playerHand.AddCard(deck.Draw()); // Deal the first card to the player
@@ -54,7 +52,6 @@ namespace BlackjackDemo
 
         }
 
-        //CheckInitialBlackjack
         public bool CheckInitialBlackjack()
         {
             bool playerBlackjack = playerHand.IsBlackjack();
@@ -79,10 +76,44 @@ namespace BlackjackDemo
         }
 
 
+        public void PlayerTurn()
+        {
+            while (true)
+            {
+                ShowHands();
+                string action = AskAction(); 
+                if (action == "hit")
+                {
+                    playerHand.AddCard(deck.Draw());
+                    if (playerHand.IsBusted())
+                    {
+                        Console.WriteLine("Player busts! Dealer wins.");
+                        return; // End player's turn if busted
+                    }
+                }
+                else if (action == "stand")
+                {
+                    break; // End player's turn
+                }
+            }
+        }
 
-        //PlayerTurn
-
-        //DealerTurn
+        public void DealerTurn()
+        {
+            RevealDealerHole(); // Reveal the dealer's hole card
+            while (dealerHand.GetValue() < 17 || (dealerHand.GetValue() == 17 && dealerHand.IsSoft()))
+            {
+                dealerHand.AddCard(deck.Draw());
+                Console.WriteLine("Dealer hits.");
+                ShowHands(); // Show hands after each dealer action
+                if (dealerHand.IsBusted())
+                {
+                    Console.WriteLine("Dealer busts! Player wins.");
+                    return; // End dealer's turn if busted
+                }
+            }
+            Console.WriteLine("Dealer stands.");
+        }
 
         //CompareHands
 
