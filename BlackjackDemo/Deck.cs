@@ -16,11 +16,11 @@ namespace BlackjackDemo
 
         public Deck()
         {
-            foreach (Enums.Suit suit in Enum.GetValues(typeof(Enums.Suit))) // Retrieves the values of the Suit enumeration
+            foreach (Enums.Suit suit in Enum.GetValues(typeof(Enums.Suit))) 
             {
-                foreach (Enums.Rank rank in Enum.GetValues(typeof(Enums.Rank))) // Retrieves the values of the Rank enumeration 
+                foreach (Enums.Rank rank in Enum.GetValues(typeof(Enums.Rank))) 
                 {
-                    cards.Add(new Card(suit, rank)); // Creates a new Card object with the current suit and rank, and adds it to the cards list
+                    cards.Add(new Card(suit, rank));
                 }
             }
         }
@@ -32,7 +32,6 @@ namespace BlackjackDemo
             for (int i = n - 1; i > 0; i--) // Start from the last element and go backwards
             {
                 int j = Random.Next(0, i + 1); // Random index from 0 to i
-                // Swap cards[i] with the element at random index
                 Card temp = cards[i];
                 cards[i] = cards[j];
                 cards[j] = temp;
@@ -43,16 +42,16 @@ namespace BlackjackDemo
         {
             if (cards.Count == 0)
             {
-                throw new InvalidOperationException("The deck is empty."); // Handle the case when there are no cards left in the deck
+                throw new InvalidOperationException("The deck is empty.");
             }
-            Card drawnCard = cards[0]; // Get the top card
-            cards.RemoveAt(0); // Remove the top card from the deck
-            return drawnCard; // Return the drawn card
+            Card drawnCard = cards[0];
+            cards.RemoveAt(0); 
+            return drawnCard; 
         }
 
         public int CardsRemaining
         {
-            get { return cards.Count; } // Property returns the number of cards left in the deck
+            get { return cards.Count; }
         }
 
 

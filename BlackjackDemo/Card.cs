@@ -13,7 +13,6 @@ namespace BlackjackDemo
         public Enums.Suit Suit { get; }
         public Enums.Rank Rank { get; }
 
-        // Constructor to initialize a card with a specific suit and rank
         public Card(Enums.Suit suit, Enums.Rank rank)
         {
             Suit = suit;

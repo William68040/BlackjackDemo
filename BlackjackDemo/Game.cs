@@ -23,31 +23,31 @@ namespace BlackjackDemo
 
         public void PlayRound()
         {
-            ResetHands(); // Reset hands for a new round
-            EnsureDeckReady(); // Ensure the deck is ready for dealing
-            DealInitial(); // Deal initial two cards to player and dealer
-            if (CheckInitialBlackjack()) // Check for initial blackjack
+            ResetHands(); 
+            EnsureDeckReady(); 
+            DealInitial(); 
+            if (CheckInitialBlackjack()) 
             {
-                return; // End the round if there's an initial blackjack
+                return; 
             }
-            PlayerTurn(); // Handle player's turn
+            PlayerTurn(); 
             if (playerHand.IsBusted())
             {
-                return; // End the round if the player busts
+                return; 
             }
-            DealerTurn(); // Handle dealer's turn
+            DealerTurn(); 
             if (dealerHand.IsBusted())
             {
-                return; // End the round if the dealer busts
+                return; 
             }
-            string result = CompareHands(); // Compare hands to determine the winner
-            AnnounceResult(result); // Announce the result of the round
+            string result = CompareHands(); 
+            AnnounceResult(result); 
         }
 
         public void ResetHands()
         {
-            playerHand = new Hand(); // Reset player hand for a new round
-            dealerHand = new Hand();  // Reset dealer hand for a new round
+            playerHand = new Hand();
+            dealerHand = new Hand(); 
         }
 
         public void EnsureDeckReady()
@@ -61,10 +61,10 @@ namespace BlackjackDemo
 
         public void DealInitial()
         {
-            playerHand.AddCard(deck.Draw()); // Deal the first card to the player
-            dealerHand.AddCard(deck.Draw()); // Deal the first card to the dealer
-            playerHand.AddCard(deck.Draw()); // Deal the second card to the player
-            dealerHand.AddCard(deck.Draw()); // Deal the second card to the dealer
+            playerHand.AddCard(deck.Draw()); 
+            dealerHand.AddCard(deck.Draw()); 
+            playerHand.AddCard(deck.Draw()); 
+            dealerHand.AddCard(deck.Draw()); 
 
         }
 
@@ -116,12 +116,12 @@ namespace BlackjackDemo
 
         public void DealerTurn()
         {
-            RevealDealerHole(); // Reveal the dealer's hole card
+            RevealDealerHole(); 
             while (dealerHand.GetValue() < 17 || (dealerHand.GetValue() == 17 && dealerHand.IsSoft()))
             {
                 dealerHand.AddCard(deck.Draw());
                 Console.WriteLine("Dealer hits.");
-                ShowHands(); // Show hands after each dealer action
+                ShowHands(); 
                 if (dealerHand.IsBusted())
                 {
                     Console.WriteLine("Dealer busts! Player wins.");
@@ -157,7 +157,7 @@ namespace BlackjackDemo
 
         public void RevealDealerHole()
         {
-            Console.WriteLine($"Dealer's hole card is: {dealerHand.ToString()}"); // Reveal the dealer's hole card
+            Console.WriteLine($"Dealer's hole card is: {dealerHand.ToString()}"); 
         }
 
         public string AskAction() 

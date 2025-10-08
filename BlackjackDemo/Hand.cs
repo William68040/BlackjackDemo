@@ -8,7 +8,7 @@ namespace BlackjackDemo
 {
     public class Hand
     {
-        private List<Card> cards; // List to hold the cards in the hand
+        private List<Card> cards;
 
         public Hand()
         {
@@ -17,7 +17,7 @@ namespace BlackjackDemo
 
         public void AddCard(Card card)
         {
-            cards.Add(card); // Add a card to the hand
+            cards.Add(card);
         }
 
         public int GetValue()
@@ -28,12 +28,12 @@ namespace BlackjackDemo
             {
                 if (card.Rank == Enums.Rank.Ace)
                 {
-                    value++; // Initially count Ace as 1
-                    aceCount++; // Keep track of the number of Aces
+                    value++; 
+                    aceCount++; 
                 }
                 else
                 {
-                    value += (int)card.Rank; // Add the value of the card to the total
+                    value += (int)card.Rank;
                 }
 
                 while (value > 21 && aceCount > 0)
@@ -42,23 +42,23 @@ namespace BlackjackDemo
                     aceCount--; // Decrease the count of Aces that can be converted
                 }
             }
-            return value; // Return the total value of the hand
+            return value;
 
         }
 
         public bool IsBusted()
         {
-            return GetValue() > 21; // Check if the hand's value exceeds 21
+            return GetValue() > 21;
         }
 
         public bool IsBlackjack()
         {
-            return cards.Count == 2 && GetValue() == 21; // Check if the hand is a blackjack (two cards totaling 21)
+            return cards.Count == 2 && GetValue() == 21; 
         }
 
         public bool IsSoft()
         {
-            return cards.Any(card => card.Rank == Enums.Rank.Ace) && GetValue() <= 21; // Check if the hand contains an Ace counted as 11 without busting
+            return cards.Any(card => card.Rank == Enums.Rank.Ace) && GetValue() <= 21; 
         }
 
     }

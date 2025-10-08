@@ -4,7 +4,12 @@
     {
         static void Main(string[] args)
         {
-           // This is a demo project for a Blackjack game.
+            Console.WriteLine("Welcome to Blackjack!");
+
+            Game game = new Game();
+            game.PlayRound();
+
+            Console.WriteLine("Thanks for playing!");
 
         }
     }
